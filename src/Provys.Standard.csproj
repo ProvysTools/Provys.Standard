@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>18.3.1</Version>
+    
+    <Authors>Provys, DCIT</Authors>
+    <Company>DCIT</Company>
+    <Copyright>Copyright © $([System.DateTime]::Now.Year) Provys</Copyright>
+    <Owners>Provys by DCIT</Owners>
+
+    <ProjectUrl>https://git.dcit.cz/pvyscomponents/net/libs/Provys.Standard</ProjectUrl>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Configurations>Debug;Release;LibDebug</Configurations>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'LibDebug|AnyCPU' Or '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiteDB" Version="5.0.12" />
+    <PackageReference Include="MessagePack" Version="2.5.140" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(Configuration)|$(Platform)'=='LibDebug|AnyCPU'">
+    <ProjectReference Include="c:\provys\pvyscomponents\provys.standard.base\src\Provys.Standard.Base.csproj" />
+    <ProjectReference Include="c:\provys\pvyscomponents\provys.standard.systemex\src\Provys.Standard.SystemEx.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' Or '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PackageReference Include="Provys.Standard.SystemEx" Version="5.3.0" />
+    <PackageReference Include="Provys.Standard.Base" Version="3.0.4" />
+  </ItemGroup>
+
+</Project>
